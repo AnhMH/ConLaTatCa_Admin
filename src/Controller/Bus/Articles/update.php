@@ -1,6 +1,6 @@
 <?php
 
-use App\Form\UpdateProductForm;
+use App\Form\UpdateArticleForm;
 use App\Lib\Api;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
@@ -10,11 +10,10 @@ $data = null;
 if (!empty($id)) {
     // Edit
     $param['id'] = $id;
-    $data = Api::call(Configure::read('API.url_products_detail'), $param);
+    $data = Api::call(Configure::read('API.url_articles_detail'), $param);
     $this->Common->handleException(Api::getError());
     if (empty($data)) {
-        AppLog::info("Product unavailable", __METHOD__, $param);
-        throw new NotFoundException("Product unavailable", __METHOD__, $param);
+        return $this->Flash->error(__('MESSAGE_DATA_NOT_EXIST'));
     }
     
     $pageTitle = __('LABEL_PRODUCT_UPDATE');
@@ -26,7 +25,7 @@ if (!empty($id)) {
 $suppliers = $this->Common->arrayKeyValue(Api::call(Configure::read('API.url_suppliers_all'), array()), 'id', 'name');
 
 // Create breadcrumb
-$listPageUrl = h($this->BASE_URL . '/products');
+$listPageUrl = h($this->BASE_URL . '/articles');
 $this->Breadcrumb->setTitle($pageTitle)
     ->add(array(
         'link' => $listPageUrl,
@@ -37,7 +36,7 @@ $this->Breadcrumb->setTitle($pageTitle)
     ));
 
 // Create Update form 
-$form = new UpdateProductForm();
+$form = new UpdateArticleForm();
 $this->UpdateForm->reset()
     ->setModel($form)
     ->setData($data)
@@ -53,28 +52,19 @@ $this->UpdateForm->reset()
         'required' => true,
     ))
     ->addElement(array(
-        'id' => 'supplier_id',
-        'label' => __('LABEL_SUPPLIER'),
-        'options' => $suppliers,
-        'empty' => '-'
-    ))
-    ->addElement(array(
-        'id' => 'avatar',
-        'label' => __('LABEL_AVATAR'),
+        'id' => 'image',
+        'label' => __('LABEL_IMAGE'),
         'image' => true,
         'type' => 'file'
     ))
     ->addElement(array(
-        'id' => 'price',
-        'label' => __('LABEL_PRICE'),
-    ))
-    ->addElement(array(
-        'id' => 'qty',
-        'label' => __('LABEL_STOCK'),
-    ))
-    ->addElement(array(
         'id' => 'description',
         'label' => __('LABEL_DESCRIPTION'),
+        'type' => 'editor'
+    ))
+        ->addElement(array(
+        'id' => 'content',
+        'label' => __('LABEL_CONTENT'),
         'type' => 'editor'
     ))
     ->addElement(array(
@@ -107,7 +97,7 @@ if ($this->request->is('post')) {
             $data['avatar'] = new CurlFile($filedata, $filetype, $filename);
         }
         // Call API
-        $id = Api::call(Configure::read('API.url_products_addupdate'), $data);
+        $id = Api::call(Configure::read('API.url_articles_addupdate'), $data);
         if (!empty($id) && !Api::getError()) {            
             $this->Flash->success(__('MESSAGE_SAVE_OK'));
             return $this->redirect("{$this->BASE_URL}/{$this->controller}/update/{$id}");

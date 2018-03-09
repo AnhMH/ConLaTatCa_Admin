@@ -74,6 +74,11 @@ $this->SimpleTable
             'empty' => ''
         ))
         ->addColumn(array(
+            'id' => 'description',
+            'title' => __('LABEL_DESCRIPTION'),
+            'empty' => ''
+        ))
+        ->addColumn(array(
             'id' => 'cate_id',
             'title' => __('LABEL_CATE'),
             'empty' => ''
