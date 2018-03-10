@@ -13,6 +13,7 @@ $this->Breadcrumb->setTitle($pageTitle)
         ));
 
 // Create search form
+$cates = $this->Common->arrayKeyValue(Api::call(Configure::read('API.url_cates_all'), array()), 'id', 'name');
 $dataSearch = array(
     'limit' => $pageSize
 );
@@ -22,6 +23,12 @@ $this->SearchForm
         ->addElement(array(
             'id' => 'name',
             'label' => __('LABEL_NAME')
+        ))
+        ->addElement(array(
+            'id' => 'limit',
+            'label' => __('LABEL_LIMIT'),
+            'options' => $cates,
+            'empty' => '-'
         ))
         ->addElement(array(
             'id' => 'limit',
@@ -79,7 +86,7 @@ $this->SimpleTable
             'empty' => ''
         ))
         ->addColumn(array(
-            'id' => 'cate_id',
+            'id' => 'cate_name',
             'title' => __('LABEL_CATE'),
             'empty' => ''
         ))
