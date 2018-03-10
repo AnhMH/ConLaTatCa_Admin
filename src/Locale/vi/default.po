@@ -5,7 +5,7 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language-Team: VCC <kiennh@vccvn.com>\n"
+"Language-Team: AnhMH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -279,3 +279,21 @@ msgstr "Bán hàng"
 
 msgid "LABEL_ORDER_BUY"
 msgstr "Nhập hàng"
+
+msgid "LABEL_ARTICLE_MANAGEMENT"
+msgstr "Quản lý tin tức"
+
+msgid "LABEL_ARTICLE_LIST"
+msgstr "Danh sách tin tức"
+
+msgid "LABEL_ARTICLE_UPDATE"
+msgstr "Cập nhật tin tức"
+
+msgid "LABEL_CONTENT"
+msgstr "Nội dung"
+
+msgid "LABEL_CATE"
+msgstr "Danh mục"
+
+msgid "LABEL_CATE_MANAGEMENT"
+msgstr "Quản lý danh mục"

@@ -16,20 +16,20 @@ if (!empty($id)) {
         return $this->Flash->error(__('MESSAGE_DATA_NOT_EXIST'));
     }
     
-    $pageTitle = __('LABEL_PRODUCT_UPDATE');
+    $pageTitle = __('LABEL_ARTICLE_UPDATE');
 } else {
     // Create new
     $pageTitle = __('LABEL_ADD_NEW');
 }
 
-$suppliers = $this->Common->arrayKeyValue(Api::call(Configure::read('API.url_suppliers_all'), array()), 'id', 'name');
+$cates = $this->Common->arrayKeyValue(Api::call(Configure::read('API.url_cates_all'), array()), 'id', 'name');
 
 // Create breadcrumb
 $listPageUrl = h($this->BASE_URL . '/articles');
 $this->Breadcrumb->setTitle($pageTitle)
     ->add(array(
         'link' => $listPageUrl,
-        'name' => __('LABEL_PRODUCT_LIST'),
+        'name' => __('LABEL_ARTICLE_LIST'),
     ))
     ->add(array(
         'name' => $pageTitle,
@@ -50,6 +50,12 @@ $this->UpdateForm->reset()
         'id' => 'name',
         'label' => __('LABEL_NAME'),
         'required' => true,
+    ))
+    ->addElement(array(
+        'id' => 'cate_id',
+        'label' => __('LABEL_CATE'),
+        'options' => $cates,
+        'empty' => '-'
     ))
     ->addElement(array(
         'id' => 'image',
@@ -90,11 +96,11 @@ if ($this->request->is('post')) {
     }
     // Validation
     if ($form->validate($data)) {
-        if (!empty($data['avatar']['name'])) {
-            $filetype = $data['avatar']['type'];
-            $filename = $data['avatar']['name'];
-            $filedata = $data['avatar']['tmp_name'];
-            $data['avatar'] = new CurlFile($filedata, $filetype, $filename);
+        if (!empty($data['image']['name'])) {
+            $filetype = $data['image']['type'];
+            $filename = $data['image']['name'];
+            $filedata = $data['image']['tmp_name'];
+            $data['image'] = new CurlFile($filedata, $filetype, $filename);
         }
         // Call API
         $id = Api::call(Configure::read('API.url_articles_addupdate'), $data);

@@ -19,17 +19,17 @@
                 </a>
             </li>
             
-            <li class="<?php if (in_array($controller, array('orders'))) echo ' active ' ?>">
-                <a href="<?php echo $BASE_URL; ?>/orders">
+            <li class="<?php if (in_array($controller, array('articles'))) echo ' active ' ?>">
+                <a href="<?php echo $BASE_URL; ?>/articles">
                     <i class="fa fa-shopping-cart"></i>
-                    <span><?php echo __('LABEL_ORDER_MANAGEMENT'); ?></span>
+                    <span><?php echo __('LABEL_ARTICLE_MANAGEMENT'); ?></span>
                 </a>
             </li>
             
-            <li class="<?php if (in_array($controller, array('products'))) echo ' active ' ?>">
-                <a href="<?php echo $BASE_URL;?>/products">
+            <li class="<?php if (in_array($controller, array('cates'))) echo ' active ' ?>">
+                <a href="<?php echo $BASE_URL;?>/cates">
                     <i class="fa fa-shopping-bag"></i>
-                    <span><?php echo __('LABEL_PRODUCT_MANAGEMENT'); ?></span>
+                    <span><?php echo __('LABEL_CATE_MANAGEMENT'); ?></span>
                 </a>
             </li>
             
