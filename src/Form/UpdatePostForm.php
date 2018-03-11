@@ -5,7 +5,7 @@ namespace App\Form;
 use Cake\Form\Form;
 use Cake\Validation\Validator;
 
-class UpdateArticleForm extends Form {
+class UpdatePostForm extends Form {
 
     /**
      * Build Validator

@@ -280,14 +280,14 @@ msgstr "Bán hàng"
 msgid "LABEL_ORDER_BUY"
 msgstr "Nhập hàng"
 
-msgid "LABEL_ARTICLE_MANAGEMENT"
-msgstr "Quản lý tin tức"
+msgid "LABEL_POST_MANAGEMENT"
+msgstr "Quản lý bài viết"
 
-msgid "LABEL_ARTICLE_LIST"
-msgstr "Danh sách tin tức"
+msgid "LABEL_POST_LIST"
+msgstr "Danh sách bài viết"
 
-msgid "LABEL_ARTICLE_UPDATE"
-msgstr "Cập nhật tin tức"
+msgid "LABEL_POST_UPDATE"
+msgstr "Cập nhật bài viết"
 
 msgid "LABEL_CONTENT"
 msgstr "Nội dung"

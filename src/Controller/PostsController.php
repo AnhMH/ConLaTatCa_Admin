@@ -5,21 +5,21 @@ namespace App\Controller;
 use Cake\Event\Event;
 
 /**
- * Articles page
+ * Posts page
  */
-class ArticlesController extends AppController {
+class PostsController extends AppController {
     
     /**
-     * Articles page
+     * Posts page
      */
     public function index() {
-        include ('Bus/Articles/index.php');
+        include ('Bus/Posts/index.php');
     }
     
     /**
      * Add/update info
      */
     public function update($id = '') {
-        include ('Bus/Articles/update.php');
+        include ('Bus/Posts/update.php');
     }
 }

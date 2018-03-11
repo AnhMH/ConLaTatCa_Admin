@@ -1,6 +1,6 @@
 <?php
 
-use App\Form\UpdateArticleForm;
+use App\Form\UpdatePostForm;
 use App\Lib\Api;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
@@ -10,13 +10,13 @@ $data = null;
 if (!empty($id)) {
     // Edit
     $param['id'] = $id;
-    $data = Api::call(Configure::read('API.url_articles_detail'), $param);
+    $data = Api::call(Configure::read('API.url_posts_detail'), $param);
     $this->Common->handleException(Api::getError());
     if (empty($data)) {
         return $this->Flash->error(__('MESSAGE_DATA_NOT_EXIST'));
     }
     
-    $pageTitle = __('LABEL_ARTICLE_UPDATE');
+    $pageTitle = __('LABEL_POST_UPDATE');
 } else {
     // Create new
     $pageTitle = __('LABEL_ADD_NEW');
@@ -25,18 +25,18 @@ if (!empty($id)) {
 $cates = $this->Common->arrayKeyValue(Api::call(Configure::read('API.url_cates_all'), array()), 'id', 'name');
 
 // Create breadcrumb
-$listPageUrl = h($this->BASE_URL . '/articles');
+$listPageUrl = h($this->BASE_URL . '/posts');
 $this->Breadcrumb->setTitle($pageTitle)
     ->add(array(
         'link' => $listPageUrl,
-        'name' => __('LABEL_ARTICLE_LIST'),
+        'name' => __('LABEL_POST_LIST'),
     ))
     ->add(array(
         'name' => $pageTitle,
     ));
 
 // Create Update form 
-$form = new UpdateArticleForm();
+$form = new UpdatePostForm();
 $this->UpdateForm->reset()
     ->setModel($form)
     ->setData($data)
@@ -68,7 +68,7 @@ $this->UpdateForm->reset()
         'label' => __('LABEL_DESCRIPTION'),
         'empty' => ''
     ))
-        ->addElement(array(
+    ->addElement(array(
         'id' => 'content',
         'label' => __('LABEL_CONTENT'),
         'type' => 'editor'
@@ -103,7 +103,7 @@ if ($this->request->is('post')) {
             $data['image'] = new CurlFile($filedata, $filetype, $filename);
         }
         // Call API
-        $id = Api::call(Configure::read('API.url_articles_addupdate'), $data);
+        $id = Api::call(Configure::read('API.url_posts_addupdate'), $data);
         if (!empty($id) && !Api::getError()) {            
             $this->Flash->success(__('MESSAGE_SAVE_OK'));
             return $this->redirect("{$this->BASE_URL}/{$this->controller}/update/{$id}");

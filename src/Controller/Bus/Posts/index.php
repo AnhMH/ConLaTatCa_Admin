@@ -6,7 +6,7 @@ $this->doGeneralAction();
 $pageSize = Configure::read('Config.PageSize');
 
 // Create breadcrumb
-$pageTitle = __('LABEL_ARTICLE_LIST');
+$pageTitle = __('LABEL_POST_LIST');
 $this->Breadcrumb->setTitle($pageTitle)
         ->add(array(
             'name' => $pageTitle,
@@ -51,7 +51,7 @@ $param = $this->getParams(array(
     'limit' => $pageSize
 ));
 
-$result = Api::call(Configure::read('API.url_articles_list'), $param);
+$result = Api::call(Configure::read('API.url_posts_list'), $param);
 $total = !empty($result['total']) ? $result['total'] : 0;
 $data = !empty($result['data']) ? $result['data'] : array();
 

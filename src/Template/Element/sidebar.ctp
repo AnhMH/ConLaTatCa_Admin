@@ -19,10 +19,10 @@
                 </a>
             </li>
             
-            <li class="<?php if (in_array($controller, array('articles'))) echo ' active ' ?>">
-                <a href="<?php echo $BASE_URL; ?>/articles">
+            <li class="<?php if (in_array($controller, array('posts'))) echo ' active ' ?>">
+                <a href="<?php echo $BASE_URL; ?>/posts">
                     <i class="fa fa-shopping-cart"></i>
-                    <span><?php echo __('LABEL_ARTICLE_MANAGEMENT'); ?></span>
+                    <span><?php echo __('LABEL_POST_MANAGEMENT'); ?></span>
                 </a>
             </li>
             
