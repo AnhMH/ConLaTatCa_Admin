@@ -306,3 +306,9 @@ msgstr "Cập nhật danh mục"
 
 msgid "LABEL_ORDER_DISPLAY"
 msgstr "Thứ tự hiển thị"
+
+msgid "LABEL_KEYWORD"
+msgstr "Từ khóa"
+
+msgid "LABEL_TYPE"
+msgstr "Thể loại"

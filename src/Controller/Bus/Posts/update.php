@@ -23,7 +23,11 @@ if (!empty($id)) {
 }
 
 $cates = $this->Common->arrayKeyValue(Api::call(Configure::read('API.url_cates_all'), array()), 'id', 'name');
-
+$types = array(
+    0 => 'Tin tức',
+    1 => 'Hình ảnh',
+    2 => 'Video'
+);
 // Create breadcrumb
 $listPageUrl = h($this->BASE_URL . '/posts');
 $this->Breadcrumb->setTitle($pageTitle)
@@ -69,9 +73,20 @@ $this->UpdateForm->reset()
         'empty' => ''
     ))
     ->addElement(array(
+        'id' => 'keyword',
+        'label' => __('LABEL_KEYWORD'),
+        'empty' => ''
+    ))
+    ->addElement(array(
         'id' => 'content',
         'label' => __('LABEL_CONTENT'),
         'type' => 'editor'
+    ))
+    ->addElement(array(
+        'id' => 'type',
+        'label' => __('LABEL_TYPE'),
+        'options' => $types,
+        'empty' => '0'
     ))
     ->addElement(array(
         'type' => 'submit',
