@@ -130,19 +130,19 @@ class AppController extends Controller
         parent::beforeRender($event);
         
         // Breadcrumb
-        if (!empty($this->Breadcrumb->get())) {
+        if (!empty($this->Breadcrumb) && !empty($this->Breadcrumb->get())) {
             $this->set('breadcrumbTitle', $this->Breadcrumb->getTitle());
             $this->set('breadcrumb', $this->Breadcrumb->get());
         }
         
         // Form / Table
-        if (!empty($this->SearchForm->get())) {
+        if (!empty($this->SearchForm) && !empty($this->SearchForm->get())) {
             $this->set('searchForm', $this->SearchForm->get());
         }
-        if (!empty($this->UpdateForm->get())) {
+        if (!empty($this->UpdateForm) && !empty($this->UpdateForm->get())) {
             $this->set('updateForm', $this->UpdateForm->get());
         }
-        if (!empty($this->SimpleTable->get())) {
+        if (!empty($this->SimpleTable) && !empty($this->SimpleTable->get())) {
             $this->set('table', $this->SimpleTable->get());
         }
         
